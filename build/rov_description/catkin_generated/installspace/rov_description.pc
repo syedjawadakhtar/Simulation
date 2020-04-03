@@ -1,0 +1,8 @@
+prefix=/home/bon2die/rov_simul/install
+
+Name: rov_description
+Description: Description of rov_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

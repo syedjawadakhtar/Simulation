@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bon2die/rov_simul/devel/.private/rov_gazebo/setup.sh

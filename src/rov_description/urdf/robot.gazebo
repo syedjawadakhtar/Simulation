@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot name="rov_model">  
+
+  <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/rov</robotNamespace>
+        </plugin>
+  </gazebo>
+
+ <gazebo reference="chasis"></gazebo>
+
+  <!-- camera -->
+  
+</robot>

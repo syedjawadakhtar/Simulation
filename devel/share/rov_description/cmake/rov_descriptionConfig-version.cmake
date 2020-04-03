@@ -1,0 +1,1 @@
+/home/bon2die/rov_simul/devel/.private/rov_description/share/rov_description/cmake/rov_descriptionConfig-version.cmake

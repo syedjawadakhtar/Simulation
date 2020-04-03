@@ -1,0 +1,8 @@
+prefix=/home/bon2die/rov_simul/install
+
+Name: catkin_tools_prebuild
+Description: Description of catkin_tools_prebuild
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

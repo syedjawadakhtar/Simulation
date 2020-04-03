@@ -1,0 +1,1 @@
+/home/bon2die/rov_simul/devel/.private/rov_description/lib/pkgconfig/rov_description.pc

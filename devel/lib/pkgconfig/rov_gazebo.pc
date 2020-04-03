@@ -1,0 +1,1 @@
+/home/bon2die/rov_simul/devel/.private/rov_gazebo/lib/pkgconfig/rov_gazebo.pc

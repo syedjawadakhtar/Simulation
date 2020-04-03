@@ -1,0 +1,8 @@
+prefix=/home/bon2die/rov_simul/devel/.private/rov_gazebo
+
+Name: rov_gazebo
+Description: Description of rov_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

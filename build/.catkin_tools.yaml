@@ -1,0 +1,6 @@
+devel_space: /home/bon2die/rov_simul/devel
+install: false
+install_space: /home/bon2die/rov_simul/install
+profile: default
+source_space: /home/bon2die/rov_simul/src
+workspace: /home/bon2die/rov_simul
