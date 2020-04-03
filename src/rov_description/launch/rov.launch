@@ -3,7 +3,7 @@
   	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<param name="rov_description" command="$(find xacro)/xacro $(find rov_description)/urdf/robot.urdf" />
 
-    	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file `find rov_description`/urdf/robot.urdf -urdf -z 1 -model rov" />
+    	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file `rospack find rov_description`/urdf/robot.urdf -urdf -z 1 -model rov" />
 	</include>
 
 </launch>
