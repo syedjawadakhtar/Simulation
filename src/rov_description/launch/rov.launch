@@ -1,9 +1,11 @@
 <launch>
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
-  	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<param name="rov_description" command="$(find xacro)/xacro $(find rov_description)/urdf/robot.urdf" />
+  	<include file="$(find gazebo_ros)/launch/empty_world.launch"></include>
 
-    	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param rov_description -urdf -z 1 -model rov" />
-	</include>
+	<param name="rov_description" command="cat  '$(find rov_description)/urdf/robot.urdf'" />
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+    		args="-param rov_description -urdf -z 1 -model rov" />
 
 </launch>
+ 
