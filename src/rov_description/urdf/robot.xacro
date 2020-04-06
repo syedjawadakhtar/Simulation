@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rov">
 
-<!--     <xacro:include filename="$(find models)/urdf/auv_model.gazebo" /> -->
+<xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
 
     <link name="chasis">
 
-<!--         <inertial>
+        <inertial>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <mass value="1.0"/>
             <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-        </inertial> -->
+        </inertial>
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
@@ -23,6 +23,147 @@
             </geometry>
         </collision>
     </link>
+    <gazebo reference="chasis">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
     
+
+    <link name="right_thruster">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.5"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+        <visual name="rightThruster_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <link name="left_thruster">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.5"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+        <visual name="leftThruster_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="front_thruster">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.5"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+        <visual name="frontThruster_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="-1.5707 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="-1.5707 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rear_thruster">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.5"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+        <visual name="rearThruster_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="-1.5707 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="-1.5707 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://rov_description/models/meshes/thruster.dae" scale="0.015 0.015 0.015"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <joint name="rightThruster_chasis" type="fixed">
+        <origin xyz="0.0 0.1 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="chasis"/>
+        <child link="right_thruster"/>
+    </joint>
+
+    <joint name="leftThruster_chasis" type="fixed">
+        <origin xyz="0.0 -0.1 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="chasis"/>
+        <child link="left_thruster"/>
+    </joint>
+   
+   <joint name="frontThruster_chasis" type="fixed">
+        <origin xyz="0.175 0.0 0.0" rpy="0.0 0.0 0.0"/> <!--  0.15 places the centre of the thruster at the exact centre of the side of the vehicle thus increasing the value of x -->
+        <parent link="chasis"/>
+        <child link="front_thruster"/>
+    </joint>
+
+    <joint name="rearThruster_chasis" type="fixed">
+        <origin xyz="-0.175 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="chasis"/>
+        <child link="rear_thruster"/>
+    </joint>
+ 
+
+ <!--    <link name="camera_link">
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${camera_link} ${camera_link} ${camera_link}"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${camera_link} ${camera_link} ${camera_link}"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+
+        <inertial>
+            <mass value="1e-5" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin xyz="${camera_link} 0 ${height3 - axel_offset*2}" rpy="0 0 0"/>
+        <parent link="chasis"/>
+        <child link="camera_link"/>
+    </joint>  -->
     
 </robot>
